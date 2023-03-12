@@ -8,17 +8,54 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--List View Controller-->
+        <!--Shopping List-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ListViewController" customModule="Shopping_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MTP-PX-xzl">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MTP-PX-xzl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8aI-8Y-OAh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MTP-PX-xzl" secondAttribute="trailing" id="U8q-o5-VIr"/>
+                            <constraint firstAttribute="bottom" secondItem="MTP-PX-xzl" secondAttribute="bottom" id="aBH-Mo-ZKP"/>
+                            <constraint firstItem="MTP-PX-xzl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fFY-8V-qMM"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="TQH-4B-IpG"/>
+                    <navigationItem key="navigationItem" title="Shopping List" id="TQH-4B-IpG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="Z93-9i-P37">
+                            <color key="tintColor" systemColor="systemRedColor"/>
+                            <connections>
+                                <action selector="deleteBarButtonAction:" destination="BYZ-38-t0r" id="B6P-cb-BLb"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="edit" id="tTk-XL-8qJ">
+                                <connections>
+                                    <action selector="editBarButtonAction:" destination="BYZ-38-t0r" id="Smk-jX-7f5"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="square.and.arrow.up" catalog="system" id="F2z-ZO-0MF">
+                                <connections>
+                                    <action selector="shareBarButtonAction:" destination="BYZ-38-t0r" id="7sy-PS-f7d"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="deleteBarButton" destination="Z93-9i-P37" id="YB7-22-BwG"/>
+                        <outlet property="editBarButton" destination="tTk-XL-8qJ" id="pIl-iT-Pka"/>
+                        <outlet property="listTableView" destination="MTP-PX-xzl" id="XmU-M9-eSf"/>
+                        <outlet property="shareBarButton" destination="F2z-ZO-0MF" id="QTX-vT-D6P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,8 +81,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

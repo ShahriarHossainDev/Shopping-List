@@ -14,6 +14,8 @@
 		FABCFEAD29BD87B700FE3308 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FABCFEAC29BD87B700FE3308 /* Assets.xcassets */; };
 		FABCFEB029BD87B700FE3308 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABCFEAE29BD87B700FE3308 /* LaunchScreen.storyboard */; };
 		FABCFEBA29BD882700FE3308 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCFEB929BD882700FE3308 /* ListViewController.swift */; };
+		FABCFEBE29BD8BA700FE3308 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCFEBC29BD8BA700FE3308 /* ListTableViewCell.swift */; };
+		FABCFEBF29BD8BA700FE3308 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABCFEBD29BD8BA700FE3308 /* ListTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		FABCFEAF29BD87B700FE3308 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FABCFEB129BD87B700FE3308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FABCFEB929BD882700FE3308 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		FABCFEBC29BD8BA700FE3308 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		FABCFEBD29BD8BA700FE3308 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		FABCFEB729BD87F500FE3308 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FABCFEBB29BD8B8500FE3308 /* Custom Cell */,
 				FABCFEB929BD882700FE3308 /* ListViewController.swift */,
 			);
 			path = View;
@@ -84,6 +89,15 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FABCFEBB29BD8B8500FE3308 /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FABCFEBC29BD8BA700FE3308 /* ListTableViewCell.swift */,
+				FABCFEBD29BD8BA700FE3308 /* ListTableViewCell.xib */,
+			);
+			path = "Custom Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FABCFEB029BD87B700FE3308 /* LaunchScreen.storyboard in Resources */,
+				FABCFEBF29BD8BA700FE3308 /* ListTableViewCell.xib in Resources */,
 				FABCFEAD29BD87B700FE3308 /* Assets.xcassets in Resources */,
 				FABCFEA829BD87B500FE3308 /* Main.storyboard in Resources */,
 			);
@@ -161,6 +176,7 @@
 				FABCFEA129BD87B500FE3308 /* AppDelegate.swift in Sources */,
 				FABCFEBA29BD882700FE3308 /* ListViewController.swift in Sources */,
 				FABCFEA329BD87B500FE3308 /* SceneDelegate.swift in Sources */,
+				FABCFEBE29BD8BA700FE3308 /* ListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
