@@ -23,9 +23,14 @@ class ListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    struct Todo{
-        var isMarked : Bool
-    }
-
+    // MARK: Cell Configuration
     
+    func configurateTheCell(_ tasks: Tasks) {
+        titleLabel.text = tasks.title
+        isMarked = tasks.taskDone
+    }
+}
+
+struct Todo{
+    var isMarked : Bool
 }

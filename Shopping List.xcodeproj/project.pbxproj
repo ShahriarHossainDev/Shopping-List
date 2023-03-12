@@ -16,6 +16,7 @@
 		FABCFEBA29BD882700FE3308 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCFEB929BD882700FE3308 /* ListViewController.swift */; };
 		FABCFEBE29BD8BA700FE3308 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCFEBC29BD8BA700FE3308 /* ListTableViewCell.swift */; };
 		FABCFEBF29BD8BA700FE3308 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABCFEBD29BD8BA700FE3308 /* ListTableViewCell.xib */; };
+		FABCFEC229BD9F7000FE3308 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCFEC129BD9F7000FE3308 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		FABCFEB929BD882700FE3308 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		FABCFEBC29BD8BA700FE3308 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		FABCFEBD29BD8BA700FE3308 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		FABCFEC129BD9F7000FE3308 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		FABCFE9F29BD87B500FE3308 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
+				FABCFEC029BD9F5800FE3308 /* Utilis */,
 				FABCFEB829BD880600FE3308 /* Model */,
 				FABCFEB729BD87F500FE3308 /* View */,
 				FABCFEA029BD87B500FE3308 /* AppDelegate.swift */,
@@ -98,6 +101,14 @@
 				FABCFEBD29BD8BA700FE3308 /* ListTableViewCell.xib */,
 			);
 			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
+		FABCFEC029BD9F5800FE3308 /* Utilis */ = {
+			isa = PBXGroup;
+			children = (
+				FABCFEC129BD9F7000FE3308 /* Constants.swift */,
+			);
+			path = Utilis;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +188,7 @@
 				FABCFEBA29BD882700FE3308 /* ListViewController.swift in Sources */,
 				FABCFEA329BD87B500FE3308 /* SceneDelegate.swift in Sources */,
 				FABCFEBE29BD8BA700FE3308 /* ListTableViewCell.swift in Sources */,
+				FABCFEC229BD9F7000FE3308 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
