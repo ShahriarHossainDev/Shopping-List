@@ -15,6 +15,13 @@ class ListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        if isMarked{
+            self.checkMarkButton.setImage(UIImage(named: "marked"), for: .normal)
+            
+        }
+        else{
+            self.checkMarkButton.setImage(UIImage(named: "unmarked"), for: .normal)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

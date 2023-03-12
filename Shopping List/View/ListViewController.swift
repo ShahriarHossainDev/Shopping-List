@@ -18,6 +18,9 @@ class ListViewController: UIViewController {
     @IBOutlet weak var listTableView: UITableView!
     
     var isdelete: Bool = false
+    var isEdit: Bool = false
+    
+    var selectedRows = [IndexPath]()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var items: [Tasks]?
@@ -56,17 +59,14 @@ class ListViewController: UIViewController {
                 } catch {
                     
                 }
-                
                 self.fetchPeople()
             }
-            
         } )
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         
         actionController.addAction(okAction)
         actionController.addAction(cancelAction)
-        
         
         actionController.addTextField { textField -> Void in
             textField.placeholder = "Enter Title..."
@@ -77,7 +77,14 @@ class ListViewController: UIViewController {
     }
     
     @IBAction func editBarButtonAction(_ sender: UIBarButtonItem) {
-        print("Edit")
+        if isEdit != true {
+            editBarButton.title = "Done"
+            isEdit = true
+        } else {
+            editBarButton.title = "Edit"
+            isEdit = false
+        }
+        
     }
     
     @IBAction func shareBarButtonAction(_ sender: UIBarButtonItem) {
@@ -87,9 +94,11 @@ class ListViewController: UIViewController {
     @IBAction func deleteBarButtonAction(_ sender: UIBarButtonItem) {
         
         if isdelete != true {
+            deleteBarButton.tintColor = .systemCyan
             isdelete = true
             
         } else {
+            deleteBarButton.tintColor = .systemRed
             isdelete = false
         }
     }
@@ -124,6 +133,16 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? ListTableViewCell {
             cell.configurateTheCell(items![indexPath.row])
+            if selectedRows.contains(indexPath){
+                cell.checkMarkButton.setImage(UIImage(named: "marked"), for: .normal)
+                self.todoStruct.isMarked = true
+            }
+            else{
+                cell.checkMarkButton.setImage(UIImage(named: "unmarked"), for: .normal)
+                self.todoStruct.isMarked = false
+            }
+            cell.checkMarkButton.tag = indexPath.row
+            cell.checkMarkButton.addTarget(self, action: #selector(checkBoxSelection(_:)), for: .touchUpInside)
             return cell
         }
         return UITableViewCell()
@@ -131,6 +150,43 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isEdit != false {
+            let task = self.items![indexPath.row]
+            
+            let actionController = UIAlertController(title: "Edit Tasks", message : nil, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Save", style: .default, handler: { (action) -> Void in
+                if actionController.textFields![0].text == "" {
+                    print("Enter Task")
+                } else {
+                    
+                    task.title = actionController.textFields![0].text
+                    
+                    do {
+                        try self.context.save()
+                    } catch {
+                        
+                    }
+                    self.fetchPeople()
+                }
+                
+            } )
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+            
+            actionController.addAction(okAction)
+            actionController.addAction(cancelAction)
+            
+            actionController.addTextField { textField -> Void in
+                textField.text = task.title
+            }
+            
+            self.present(actionController, animated: true, completion: nil)
+            
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -151,6 +207,17 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
             return UISwipeActionsConfiguration(actions: [action])
         }
         return UISwipeActionsConfiguration()
+    }
+    
+    
+    @objc func checkBoxSelection(_ sender:UIButton) {
+        let selectedIndexPath = IndexPath(row: sender.tag, section: 0)
+        if self.selectedRows.contains(selectedIndexPath) {
+            self.selectedRows.remove(at: self.selectedRows.firstIndex(of: selectedIndexPath)!)
+        } else {
+            self.selectedRows.append(selectedIndexPath)
+        }
+        self.listTableView.reloadData()
     }
     
 }
